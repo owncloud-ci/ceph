@@ -18,9 +18,15 @@ set -e
 : ${KEYSTONE_ADMIN_TENANT:=admin}
 : ${KEYSTONE_ADMIN_PASS:=admin}
 
-ip_address=$(head -n1 /etc/hosts | cut -d"	" -f1)
+for netdev in /sys/class/net/*; do
+  netdev=${netdev##*/}
+  if [[ $netdev != 'lo' ]]; then
+    break
+  fi
+done
+subnet=$(ip addr show $netdev | sed -n 's/.*inet \([0-9\.]*\/[0-9]*\) .*/\1/p')
+ip_address=${subnet%%/*}
 : ${MON_IP:=${ip_address}}
-subnet=$(ip route | grep "src ${ip_address}" | cut -d" " -f1)
 : ${CEPH_NETWORK:=${subnet}}
 
 #######
