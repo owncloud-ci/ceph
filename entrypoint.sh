@@ -271,6 +271,10 @@ ENDHERE
   keystone user-role-add --user=${KEYSTONE_ADMIN_USER} --tenant=${KEYSTONE_ADMIN_TENANT} --role=admin
 fi
 
+if [[ -e /run/notifyme.sock ]]; then
+  echo 'READY=1' > /run/notifyme.sock
+fi
+
 
 #########
 # WATCH #
