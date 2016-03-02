@@ -147,7 +147,7 @@ if [ ! -e /var/lib/ceph/osd/${CLUSTER}-0/keyring ]; then
     # HACK create btrfs loopback device
     echo "creating osd storage image"
     dd if=/dev/zero of=/tmp/osddata bs=1M count=${OSD_SIZE}
-    mkfs.btrfs /tmp/osddata
+    mkfs.btrfs -O ^extref /tmp/osddata
     echo "mounting via loopback"
     mount -o loop /tmp/osddata /var/lib/ceph/osd/${CLUSTER}-0
     echo "now mounted:"
