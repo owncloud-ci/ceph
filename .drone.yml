@@ -10,7 +10,7 @@ pipeline:
     image: plugins/docker:17.05
     pull: true
     secrets: [ docker_username, docker_password ]
-    repo: owncloudci/ceph-keystone
+    repo: owncloudci/ceph
     label_schema:
       - version=latest
     dry_run: true
@@ -22,7 +22,7 @@ pipeline:
     image: plugins/docker:17.05
     pull: true
     secrets: [ docker_username, docker_password ]
-    repo: owncloudci/ceph-keystone
+    repo: owncloudci/ceph
     label_schema:
       - version=latest
     tags: [ 'latest' ]

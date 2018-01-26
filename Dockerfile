@@ -1,7 +1,7 @@
 FROM ceph/base
 
 LABEL maintainer="ownCloud DevOps <devops@owncloud.com>" \
-  org.label-schema.name="ownCloud CI ceph-keystone" \
+  org.label-schema.name="ownCloud CI ceph" \
   org.label-schema.vendor="ownCloud GmbH" \
   org.label-schema.schema-version="1.0"
 
