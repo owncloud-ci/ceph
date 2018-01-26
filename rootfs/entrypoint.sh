@@ -18,6 +18,8 @@ set -e
 : ${KEYSTONE_ADMIN_TENANT:=admin}
 : ${KEYSTONE_ADMIN_PASS:=admin}
 
+: ${NOTIFICATION_SOCKET:="/run/notifyme.sock"}
+
 for netdev in /sys/class/net/*; do
   netdev=${netdev##*/}
   if [[ $netdev != 'lo' ]]; then
@@ -271,8 +273,8 @@ ENDHERE
   keystone user-role-add --user=${KEYSTONE_ADMIN_USER} --tenant=${KEYSTONE_ADMIN_TENANT} --role=admin
 fi
 
-if [[ -e /run/notifyme.sock ]]; then
-  echo 'READY=1' > /run/notifyme.sock
+if [[ -e "${NOTIFICATION_SOCKET}" ]]; then
+  echo 'READY=1' > "${NOTIFICATION_SOCKET}"
 fi
 
 
