@@ -5,7 +5,7 @@ set -e
 : ${RGW_NAME:=$(hostname -s)}
 : ${MON_NAME:=$(hostname -s)}
 : ${RGW_CIVETWEB_PORT:=80}
-: ${OSD_SIZE:=100}
+: ${OSD_SIZE:=250}
 
 : ${KEYSTONE_ADMIN_TOKEN:=admin}
 : ${KEYSTONE_ADMIN_PORT:=35357}
